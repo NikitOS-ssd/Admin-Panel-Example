@@ -21,7 +21,7 @@ import "../../../../assets/scss/pages/authentication.scss"
 
 class Register extends React.Component {
   state = {
-    activeTab: "1"
+    activeTab: "2"
   }
   toggle = tab => {
     if (this.state.activeTab !== tab) {

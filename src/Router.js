@@ -178,32 +178,35 @@ const accessControl = lazy(() =>
   import("./extensions/access-control/AccessControl")
 )
 // Set Layout and Component Using App Route
-const RouteConfig = ({ component: Component, fullLayout, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => {
-      return (
-        <ContextLayout.Consumer>
-          {context => {
-            let LayoutTag =
-              fullLayout === true
-                ? context.fullLayout
-                : context.state.activeLayout === "horizontal"
-                ? context.horizontalLayout
-                : context.VerticalLayout
-            return (
-              <LayoutTag {...props} permission={props.user}>
-                <Suspense fallback={<Spinner />}>
-                  <Component {...props} />
-                </Suspense>
-              </LayoutTag>
-            )
-          }}
-        </ContextLayout.Consumer>
-      )
-    }}
-  />
-)
+const RouteConfig = ({ component: Component, fullLayout, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        return (
+          <ContextLayout.Consumer>
+            {context => {
+              let LayoutTag =
+                fullLayout === true
+                  ? context.fullLayout
+                  : context.state.activeLayout === "horizontal"
+                    ? context.horizontalLayout
+                    : context.VerticalLayout
+              return (
+                <LayoutTag {...props} permission={props.user}>
+                  <Suspense fallback={<Spinner />}>
+                    <Component {...props} />
+                  </Suspense>
+                </LayoutTag>
+              )
+            }}
+          </ContextLayout.Consumer>
+        )
+      }}
+    />
+  )
+}
+
 const mapStateToProps = state => {
   return {
     user: state.auth.login.userRole
@@ -214,6 +217,9 @@ const AppRoute = connect(mapStateToProps)(RouteConfig)
 
 class AppRouter extends React.Component {
   render() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
+
     return (
       // Set the directory path if you are deploying in sub-folder
       <Router history={history}>

@@ -5,6 +5,8 @@ import { Check } from "react-feather"
 import { connect } from "react-redux"
 import { signupWithFirebase } from "../../../../redux/actions/auth/registerActions"
 import { history } from "../../../../history"
+
+
 class RegisterFirebase extends React.Component {
   state = {
     email: "",
@@ -69,7 +71,7 @@ class RegisterFirebase extends React.Component {
           <Checkbox
             color="primary"
             icon={<Check className="vx-icon" size={16} />}
-            label=" I accept the terms & conditions."
+            label="Я принимаю условия использования"
             defaultChecked={true}
           />
         </FormGroup>
@@ -79,10 +81,10 @@ class RegisterFirebase extends React.Component {
             color="primary"
             outline
           >
-            Login
+            Войти
           </Button.Ripple>
           <Button.Ripple color="primary" type="submit">
-            Register
+            Зарегистрироваться
           </Button.Ripple>
         </div>
       </Form>

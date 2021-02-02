@@ -16,8 +16,8 @@ import {
 
 class LoginFirebase extends React.Component {
   state = {
-    email: "demo@demo.com",
-    password: "demodemo",
+    email: "demo@demo.ru",
+    password: "password",
     remember: false
   }
 
@@ -71,12 +71,12 @@ class LoginFirebase extends React.Component {
               <Checkbox
                 color="primary"
                 icon={<Check className="vx-icon" size={16} />}
-                label="Remember me"
+                label="Запомнить меня"
                 defaultChecked={false}
                 onChange={this.handleRemember}
               />
               <div className="float-right">
-                <Link to="/pages/forgot-password">Forgot Password?</Link>
+                <Link to="/pages/forgot-password">Забыли пароль?</Link>
               </div>
             </FormGroup>
             <div className="d-flex justify-content-between">
@@ -87,10 +87,10 @@ class LoginFirebase extends React.Component {
                   history.push("/pages/register")
                 }}
               >
-                Register
+                Регистрация
               </Button.Ripple>
               <Button.Ripple color="primary" type="submit">
-                Login
+                Войти
               </Button.Ripple>
             </div>
           </Form>
